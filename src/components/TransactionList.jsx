@@ -12,7 +12,7 @@ function TransactionList({ accountId, refreshKey }) {
         }
 
         api.get(`/api/v1/accounts/${accountId}/transactions`)
-            .then((res) => setTransactions(res.data))
+            .then((res) => setTransactions(res.data.content)) // 👈 FIX
             .catch(() => setError("Failed to load transactions"));
     }, [accountId, refreshKey]);
 

@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
+import BalanceActionForm from "./BalanceActionForm";
 import api from "../api/api";
 
-function AccountList(props) {
+function AccountList({ refreshKey, onSelectAccount, onRefresh }) {
     const [accounts, setAccounts] = useState([]);
     const [error, setError] = useState(null);
-    let refreshKey = props.refreshKey;
-    const onSelectAccount = props.onSelectAccount;
 
     useEffect(() => {
         api.get("/api/v1/accounts")
@@ -21,14 +20,23 @@ function AccountList(props) {
 
             <ul>
                 {accounts.map((acc) => (
-                    <li
-                        key={acc.id}
-                        onClick={() => onSelectAccount(acc.id)}
-                        style={{ cursor: "pointer" }}
-                    >
-                        {acc.ownerName} — {acc.currency} — {acc.balance}
-                    </li>
+                    <li key={acc.id}>
+                        <strong>
+                            {acc.ownerName} — {acc.currency} — {acc.balance}
+                        </strong>
 
+                        <BalanceActionForm
+                            accountId={acc.id}
+                            action="deposit"
+                            onSuccess={onRefresh}
+                        />
+
+                        <BalanceActionForm
+                            accountId={acc.id}
+                            action="withdraw"
+                            onSuccess={onRefresh}
+                        />
+                    </li>
                 ))}
             </ul>
         </div>

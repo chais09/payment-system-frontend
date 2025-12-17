@@ -4,6 +4,7 @@ import CreateAccountForm from "./components/CreateAccountForm";
 import TransferForm from "./components/TransferForm";
 import TransactionList from "./components/TransactionList";
 
+
 function App() {
   const [refreshKey, setRefreshKey] = useState(0);
   const [selectedAccountId, setSelectedAccountId] = useState(null);
@@ -24,6 +25,7 @@ function App() {
       <AccountList
         refreshKey={refreshKey}
         onSelectAccount={setSelectedAccountId}
+        onRefresh={refresh}
       />
 
       <TransactionList
