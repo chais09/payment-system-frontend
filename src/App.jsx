@@ -13,33 +13,37 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Wise Payments</h1>
+      <h1>Payments Webpage</h1>
 
-      <section>
-        <CreateAccountForm onCreated={refresh} />
-      </section>
+      <div className="grid">
+        <div className="card">
+          <CreateAccountForm onCreated={refresh} />
+        </div>
 
-      <section>
-        <TransferForm
-          onTransferSuccess={refresh}
-          refreshKey={refreshKey}
-        />
-      </section>
+        <div className="card">
+          <TransferForm
+            onTransferSuccess={refresh}
+            refreshKey={refreshKey}
+          />
+        </div>
 
-      <section>
-        <AccountList
-          refreshKey={refreshKey}
-          onSelectAccount={setSelectedAccountId}
-          onRefresh={refresh}
-        />
-      </section>
+        <div className="card full-width">
+          <AccountList
+            refreshKey={refreshKey}
+            onSelectAccount={setSelectedAccountId}
+            selectedAccountId={selectedAccountId}
+            onRefresh={refresh}
 
-      <section>
-        <TransactionList
-          accountId={selectedAccountId}
-          refreshKey={refreshKey}
-        />
-      </section>
+          />
+        </div>
+
+        <div className="card full-width">
+          <TransactionList
+            accountId={selectedAccountId}
+            refreshKey={refreshKey}
+          />
+        </div>
+      </div>
     </div>
   );
 }

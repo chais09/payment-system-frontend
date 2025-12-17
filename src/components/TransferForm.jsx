@@ -62,7 +62,7 @@ function TransferForm(props) {
         <div>
             <h2>Transfer</h2>
 
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p className="error">{error}</p>}
 
             <form onSubmit={handleSubmit}>
                 <select

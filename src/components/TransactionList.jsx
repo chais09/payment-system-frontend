@@ -24,7 +24,7 @@ function TransactionList({ accountId, refreshKey }) {
         <div>
             <h3>Transaction History</h3>
 
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p className="error">{error}</p>}
 
             <table border="1" cellPadding="6">
                 <thead>
