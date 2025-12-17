@@ -12,26 +12,34 @@ function App() {
   const refresh = () => setRefreshKey((k) => k + 1);
 
   return (
-    <div>
+    <div className="app">
       <h1>Wise Payments</h1>
 
-      <CreateAccountForm onCreated={refresh} />
+      <section>
+        <CreateAccountForm onCreated={refresh} />
+      </section>
 
-      <TransferForm
-        onTransferSuccess={refresh}
-        refreshKey={refreshKey}
-      />
+      <section>
+        <TransferForm
+          onTransferSuccess={refresh}
+          refreshKey={refreshKey}
+        />
+      </section>
 
-      <AccountList
-        refreshKey={refreshKey}
-        onSelectAccount={setSelectedAccountId}
-        onRefresh={refresh}
-      />
+      <section>
+        <AccountList
+          refreshKey={refreshKey}
+          onSelectAccount={setSelectedAccountId}
+          onRefresh={refresh}
+        />
+      </section>
 
-      <TransactionList
-        accountId={selectedAccountId}
-        refreshKey={refreshKey}
-      />
+      <section>
+        <TransactionList
+          accountId={selectedAccountId}
+          refreshKey={refreshKey}
+        />
+      </section>
     </div>
   );
 }
