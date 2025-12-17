@@ -43,7 +43,7 @@ function AccountList({ refreshKey, onSelectAccount, onRefresh, selectedAccountId
                         onClick={() => onSelectAccount(acc.id)}>
                         <div className="account-header">
                             <span>{acc.ownerName} ({acc.currency})</span>
-                            <span>Balance: {acc.balance}</span>
+                            <span>Balance: {acc.currency == "USD" ? '$' : '€'} {acc.balance}</span>
                         </div>
 
                         <BalanceActionForm
