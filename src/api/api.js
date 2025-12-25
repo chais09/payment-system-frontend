@@ -1,14 +1,14 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://wise-payments-microservice.onrender.com",
+    baseURL: process.env.REACT_APP_API_BASE_URL || "https://wise-payments-microservice-lu8r.onrender.com",
 });
 
 // Add a response interceptor
 api.interceptors.response.use(
     (response) => response,   // just return response normally
     (error) => {
-        if (error.response && error.response.status === 503) {
+        if (error.response) {
             // 🔥 Handle 503 here
             console.warn("Service unavailable — free tier may be exhausted.");
 
