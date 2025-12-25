@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: process.env.REACT_APP_API_BASE_URL || "https://wise-payments-microservice-lu8r.onrender.com",
+    baseURL: "https://wise-payments-microservice.onrender.com",
 });
 
 // Add a response interceptor
