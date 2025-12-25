@@ -9,7 +9,12 @@ function AccountList({ refreshKey, onSelectAccount, onRefresh, selectedAccountId
     useEffect(() => {
         api.get("/api/v1/accounts")
             .then((res) => setAccounts(res.data))
-            .catch(() => setError("Failed to load accounts"));
+            .catch(() => {
+                setError("Failed to load accounts");
+                // Example options:
+                // 1️⃣ Show a UI toast / alert
+                alert("⚠️ Service unavailable — free tier resource may be exhausted. Please try again later.");
+            });
     }, [refreshKey]);
 
     const handleDelete = async (accountId) => {
